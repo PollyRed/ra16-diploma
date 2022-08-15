@@ -6,6 +6,8 @@ import Main from './components/Main/Main';
 import NotFound from './components/Main/NotFound';
 import About from './components/Main/About';
 import Contacts from './components/Main/Contacts';
+import Catalog from './components/Main/Catalog';
+import Home from './components/Main/Home';
 
 function App() {
   return (
@@ -14,9 +16,11 @@ function App() {
          <Header />
          <Main>
             <Routes>
-               <Route path="/about" element={<About />} />
-               <Route path="/contacts" element={<Contacts />} />
-               <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/catalog" element={<Catalog withSearch/>} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
          </Main>
          <Footer />

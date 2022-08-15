@@ -1,0 +1,31 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { changeSearchField } from '../../actions/actionCreator';
+import { fetchSearchItemsThunked } from '../../actions/thunks';
+
+function Search() {
+   const { searchValue } = useSelector((state) => state.catalog);
+   const dispatch = useDispatch();
+
+   const onChangeField = (e) => {
+      const { value } = e.target;
+      dispatch(changeSearchField(value));
+      dispatch(fetchSearchItemsThunked());
+   };
+
+   return (
+      <form
+         className="catalog-search-form form-inline"
+         onSubmit={(e) => e.preventDefault()}
+      >
+         <input
+            className="form-control"
+            placeholder="Поиск"
+            name="search"
+            value={searchValue}
+            onChange={onChangeField}
+         />
+      </form>
+   );
+}
+
+export default Search;
