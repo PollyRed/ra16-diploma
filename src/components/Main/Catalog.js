@@ -1,6 +1,6 @@
-import Categories from "./Categories";
-import Products from "./Products";
-import Search from "./Search";
+import Categories from './Categories';
+import Products from './Products';
+import Search from './Search';
 
 function Catalog(props) {
   const { withSearch } = props;

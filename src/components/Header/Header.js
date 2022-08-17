@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { changeSearchField } from '../../actions/actionCreator';
 
 function Header() {
@@ -10,6 +10,7 @@ function Header() {
     search: '',
     visible: false,
  });
+ const quantity = useSelector((state) => state.cart.cart).length;
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -50,10 +51,14 @@ function Header() {
               <div>
                 <div className="header-controls-pics">
                   <div data-id="search-expander" className="header-controls-pic header-controls-search" onClick={onSearch} onKeyPress={onSearch}></div>
-                  <div className="header-controls-pic header-controls-cart">
-                    <div className="header-controls-cart-full">1</div>
+                  <Link to="/cart" className="header-controls-pic header-controls-cart">
+                    {Boolean(quantity) && (
+                        <div className="header-controls-cart-full">
+                          {quantity}
+                        </div>
+                    )}
                     <div className="header-controls-cart-menu"></div>
-                  </div>
+                  </Link>
                 </div>
                 <form
                   data-id="search-form"

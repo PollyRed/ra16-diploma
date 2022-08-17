@@ -1,8 +1,11 @@
 function Loader() {
   return (
-    <div>
-
-    </div>
+    <div className="preloader">
+         <span />
+         <span />
+         <span />
+         <span />
+      </div>
   );
 }
 

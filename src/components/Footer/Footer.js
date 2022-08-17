@@ -1,4 +1,4 @@
-function Footer(props) {
+function Footer() {
   return (
     <footer className="container bg-light footer">
       <div className="row">

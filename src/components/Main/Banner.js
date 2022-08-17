@@ -1,6 +1,6 @@
 import banner from './images/banner.jpg';
 
-function Banner(props) {
+function Banner() {
   return (
     <div className="banner">
       <img src={banner} className="img-fluid" alt="К весне готовы!"/>

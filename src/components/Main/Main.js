@@ -1,4 +1,4 @@
-import Banner from "./Banner";
+import Banner from './Banner';
 
 function Main(props) {
   const { children } = props;

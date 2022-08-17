@@ -1,4 +1,4 @@
-import HitsContent from "./HitsContent";
+import HitsContent from './HitsContent';
 
 function Hits(props) {
   return (

@@ -7,7 +7,7 @@ import Card from './Card';
 export default function HitsContent() {
    const dispatch = useDispatch();
    const storedItems = useSelector((state) => state.hits.items);
-   const isLoad = useSelector((state) => state.hits.isLoad);
+   const isLoad = useSelector((state) => state.hits.isLoaded);
    const isError = useSelector((state) => state.hits.isError);
    useEffect(() => {
       dispatch(fetchHitsThunked());

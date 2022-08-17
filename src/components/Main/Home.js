@@ -1,5 +1,5 @@
-import Catalog from "./Catalog";
-import Hits from "./Hits";
+import Catalog from './Catalog';
+import Hits from './Hits';
 
 function Home() {
   return (
