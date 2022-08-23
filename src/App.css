@@ -219,6 +219,22 @@ section {
   outline: none;
   box-shadow: none;
 }
+.card-img-top {
+  max-height: 100%;
+  width: auto;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+.card-img {
+  position: relative;
+}
+.card-img:after {
+  content: '';
+  padding-top: 100%;
+  display: block;
+}
 
 /* Footer */
 .footer {
