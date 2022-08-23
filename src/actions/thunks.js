@@ -18,22 +18,22 @@ import {
 } from './actionCreator';
 
 export const fetchHitsThunked = () => (dispatch) => {
-  dispatch(hitsLoading(true));
-  fetch(`http://localhost:7070/api/top-sales/`)
-     .then((responce) => responce.json())
-     .then((json) => {
-        dispatch(putHits(json));
-        dispatch(hitsLoading(false));
-     })
-     .catch((err) => {
-        dispatch(hitsLoading(false));
-        dispatch(hitsError(err));
-        console.log(err);
-     });
+   dispatch(hitsLoading(true));
+   fetch(`${process.env.REACT_APP_BACKEND_URL}top-sales/`)
+      .then((responce) => responce.json())
+      .then((json) => {
+         dispatch(putHits(json));
+         dispatch(hitsLoading(false));
+      })
+      .catch((err) => {
+         dispatch(hitsLoading(false));
+         dispatch(hitsError(err));
+         console.log(err);
+      });
 };
 
 export const fetchCategoriesThunked = () => (dispatch) => {
-  fetch(`http://localhost:7070/api/categories/`)
+  fetch(`${process.env.REACT_APP_BACKEND_URL}categories/`)
      .then((responce) => responce.json())
      .then((json) => dispatch(putCategories(json)))
      .catch((err) => {
@@ -49,7 +49,7 @@ export const fetchCatalogItemsThunked = () => (dispatch, getState) => {
   const q = searchValue ? `q=${searchValue}&` : '';
   const details = categoryId + q;
 
-  const url = `http://localhost:7070/api/items?${details}`;
+  const url = `${process.env.REACT_APP_BACKEND_URL}items?${details}`;
   dispatch(declareLoadingCatalog(true));
   fetch(url)
      .then((responce) => responce.json())
@@ -68,7 +68,7 @@ export const fetchCatalogItemsThunked = () => (dispatch, getState) => {
 
 export const fetchProduct = (id) => (dispatch) => {
   dispatch(declareLoadingProduct(true));
-  fetch(`http://localhost:7070/api/items/${id}`)
+  fetch(`${process.env.REACT_APP_BACKEND_URL}items/${id}`)
      .then((responce) => responce.json())
      .then((json) => {
         dispatch(putProduct(json));
@@ -86,7 +86,7 @@ export const fetchMoreItemsThunked = () => (dispatch, getState) => {
   const categoryId = category ? `categoryId=${category}&` : '';
   const q = searchValue ? `q=${searchValue}&` : '';
   const details = categoryId + q;
-  const url = `http://localhost:7070/api/items?${details}offset=${offset}`;
+  const url = `${process.env.REACT_APP_BACKEND_URL}items?${details}offset=${offset}`;
   dispatch(declareLoadingMoreProducts(true));
   fetch(url)
      .then((responce) => responce.json())
@@ -114,7 +114,7 @@ export const fetchSearchItemsThunked = () => (dispatch, getState) => {
   }
   dispatch(declareLoadingCatalog(true));
   fetch(
-     `http://localhost:7070/api/items?categoryId=${category}&q=${searchValue}`,
+     `${process.env.REACT_APP_BACKEND_URL}items?categoryId=${category}&q=${searchValue}`,
      {
         signal: controller.signal,
      }
@@ -151,7 +151,7 @@ export const fetchOrderFormThunked = (data) => (dispatch, getState) => {
   dispatch(declareLoadingOrder(true));
   dispatch(setStatusOrder(null));
 
-  fetch(`http://localhost:7070/api/order`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}order`, {
      method: 'POST',
      headers: { 'Content-Type': 'application/json' },
      body: JSON.stringify(order),
