@@ -9,13 +9,16 @@ function Search() {
    const onChangeField = (e) => {
       const { value } = e.target;
       dispatch(changeSearchField(value));
-      dispatch(fetchSearchItemsThunked());
    };
 
    return (
       <form
          className="catalog-search-form form-inline"
-         onSubmit={(e) => e.preventDefault()}
+         onSubmit={(e) => {
+               e.preventDefault();
+               dispatch(fetchSearchItemsThunked());
+            }
+         }
       >
          <input
             className="form-control"

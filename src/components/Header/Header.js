@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { changeSearchField } from '../../actions/actionCreator';
+import { fetchSearchItemsThunked } from '../../actions/thunks';
 
 function Header() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function Header() {
         dispatch(changeSearchField(form.search));
         setForm((prev) => ({ ...prev, search: '' }));
         navigate('/catalog');
+        dispatch(fetchSearchItemsThunked());
     }
     setForm((prev) => ({ ...prev, visible: !form.visible }));
   };
