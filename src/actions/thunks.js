@@ -96,6 +96,8 @@ export const fetchMoreItemsThunked = () => (dispatch, getState) => {
         if (json.length < 6) dispatch(reportCompletionOfItems(true));
      })
      .catch((err) => {
+        dispatch(declareLoadingCatalog(false));
+        dispatch(putCatalogItems({}));
         dispatch(catalogError(err));
         console.log(err);
      });
@@ -126,6 +128,8 @@ export const fetchSearchItemsThunked = () => (dispatch, getState) => {
         dispatch(declareLoadingCatalog(false));
      })
      .catch((err) => {
+        dispatch(declareLoadingCatalog(false));
+        dispatch(putCatalogItems({}));
         dispatch(catalogError(err));
         console.log(err);
      });
